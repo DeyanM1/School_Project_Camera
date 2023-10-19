@@ -23,13 +23,13 @@ cap.set(10, 100)  # brightness
 print("Found Cam")
 while True:
     ret, frame = cap.read()
-    cv2.imshow('webcam', frame)
+    #cv2.imshow('webcam', frame)
     for barcode in decode(frame):
         myData = barcode.data.decode("utf-8")
         inMonday = myData in list_monday
         inListNew = myData in list_new
         if inMonday == True and inListNew == False:
-            print("Schon eingepackt!")
+            print(f"Schon eingepackt! {myData}")
         
         for elem in list_new:
             if elem == myData and myData in list_monday:
